@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>디데이 계산기</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        text-align: center;
+        margin: 0 ;
+        font-family: "Nanum Gothic", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        background-color: rgb(240, 240, 240);
+      }
+      #div{
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 200px;
+        background-color: white;
+        border: 0;
+        border-radius: 20px;
+        box-shadow: 0px 0px 20px rgb(174, 185, 197);
+      }
+      div h1 {
+        font-family: "Black Han Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: rgb(4, 121, 255);
+        font-size: 300%;
+        padding: 50px 0 5px 0;
+        text-shadow: 5px 5px rgb(212, 213, 219);
+      }
+      div h3{
+        padding: 0 0 20px 0;
+      }
+      #date{
+        width: 150px;
+        height: 25px;
+        border-radius: 5px;
+        
+        background-color: rgb(232, 235, 238);
+      }
+      div h4{
+        margin: 30px 0 0 0;
+        color:  rgb(4, 121, 255);
+      }
+      #text{
+        width: 200px;
+        height: 30px;
+        border-radius: 5px;
+   
+        background-color: rgb(232, 235, 238);
+      }
+      #button-group{
+        padding: 20px 0 0 0;
+      }
+      button {
+        padding: 20px;
+        border-radius: 5px;
+        border: 0;
+      }
+      #btn{
+        margin: 5px 5px 15px 0;
+        border-radius: 5px;
+        background-color: rgb(4, 121, 255);
+        color: white;
+        border: 0;
+      }
+      #btn:hover{
+        font-weight: bold;
+        background-color: rgb(1, 95, 202);
+      }
+      #btn1{
+        margin: 5px 0 15px 5px;
+        border-radius: 5px;
+        background-color: rgb(121, 173, 38);
+        color: white;
+        border: 0;
+      }
+      #btn1:hover{
+        font-weight: bold;
+        background-color: rgb(86, 128, 20);
+      }
+      
+     #calP{
+      padding: 20px 0 5px 0;
+     }
+     #addP{
+      padding: 5px 0 40px 0;
+      
+     }
+    </style>
+  </head>
+  <body>
+    <div id="div">
+      <h1>디데이 계산기</h1>
+      <h3 id="curDate"></h3>
+      <input type="date" name="" id="date" />
+
+      <h4>주제</h4></p>
+      <input type="text" name="" id="text" />
+      <div id="button-group">
+        <button id="btn">계산하기</button>
+        <button id="btn1">추가하기</button>
+      </div>
+      
+      <p id="calP"></p>
+      <p id="addP"></p>
+    </div>
+
+    <script>
+      let date = document.getElementById("curDate");
+      let date1 = new Date();
+      let day = [
+        "일요일",
+        "월요일",
+        "화요일",
+        "수요일",
+        "목요일",
+        "금요일",
+        "토요일",
+      ];
+      let dayName = day[date1.getDay()];
+
+      date.innerHTML = `${date1.getFullYear()}년 ${
+        date1.getMonth() + 1
+      }월 ${date1.getDate()}일  ${dayName}`;
+
+      //
+
+      let inputDate = document.getElementById("date");
+      let btn = document.getElementById("btn");
+
+      
+      // 계산하기
+
+      btn.addEventListener("click", () => {
+        let curDate = new Date();
+        let selectedDate = new Date(inputDate.value)
+        let diff = selectedDate - curDate;
+        let remainDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+        let p = document.getElementById("calP");
+
+        // isNaN(Not-a-Number)/ isNaN(selectedDate)는 true를 반환
+        if(isNaN(selectedDate)){
+          p.innerHTML = `날짜를 입력해주세요`
+        }else{
+         p.innerHTML = `D-day까지 ${remainDay}일 남았습니다`;
+        }
+        p.style=`color:rgb(4, 121, 255); font-size : 20px`
+      });
+
+      //
+
+      // btn.addEventListener("click", () => {
+      //   // 날짜 데이터 가져오기
+      //   let curDate = new Date();
+      //   // 문자열 날짜를 Date타입으로 변환(2024-07-20)
+      //   let selectedDate = new Date(inputDate.value)
+      //   let diff = selectedDate - curDate;
+      //   let remainDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      //   let p = document.getElementById("calP");
+
+      //   p.innerHTML = `D-day까지 ${remainDay}일 남았습니다`;
+      //   //스타일 시트 적용
+      //   p.style=`color:rgb(4, 121, 255); font-size : 20px`
+      // });
+
+
+    //
+    // 추가하기
+
+    let inputText= document.getElementById("text")
+
+    btn1.addEventListener("click", () => {
+      let curDate = new Date();
+      let selectedDate = new Date(inputDate.value)
+      let diff = selectedDate - curDate;
+      let remainDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+      let text=inputText.value
+      let p1 = document.getElementById("addP");
+        
+      if(text.trim() === ""){
+          p1.innerHTML =`주제를 입력해주세요`
+        }else{
+        p1.innerHTML = `${text}까지 ${remainDay}일 남았습니다`;  
+      }p1.style=`color:rgb(121, 173, 38); font-size : 20px`
+    });
+
+
+
+
+      //
+      // let inputText= document.getElementById("text")
+
+      // btn1.addEventListener("click",()=>{
+      //   let curDate = new Date();
+      //   let selectedDate = new Date(inputDate.value)
+      //   let diff = selectedDate - curDate;
+      //   let remainDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
+      //   let p1 = document.getElementById("addP");
+
+      //   let text=inputText.value
+      //   p1.innerHTML = `${text}까지 ${remainDay}일 남았습니다`;
+      //   p1.style=`color:rgb(121, 173, 38); font-size : 20px`
+      // })
+
+    </script>
+
+  </body>
+</html>

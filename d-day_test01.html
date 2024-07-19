@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Nanum+Gothic&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        text-align: center;
+        margin: 30px;
+        font-family: "Nanum Gothic", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        background-color: rgb(240, 240, 240);
+      }
+      h1 {
+        font-family: "Black Han Sans", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: rgb(4, 121, 255);
+        font-size: 300%;
+      }
+      button {
+        padding: 15px;
+        border-radius: 5px;
+        background-color: rgb(4, 121, 255);
+        color: white;
+        border: 0;
+      }
+      input {
+        padding: 5px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>디데이 계산기</h1>
+    <h3 id="curDate"></h3>
+    <input type="date" name="" id="date" /><br />
+    <button id="btn">계산하기</button>
+
+    <p id="p"></p>
+
+    <script>
+      let date = document.getElementById("curDate");
+      let date1 = new Date();
+      let day = [
+        "일요일",
+        "월요일",
+        "화요일",
+        "수요일",
+        "목요일",
+        "금요일",
+        "토요일",
+      ];
+      let dayName = day[date1.getDay()];
+
+      date.innerHTML = `${date1.getFullYear()}년 ${
+        date1.getMonth() + 1
+      }월 ${date1.getDate()}일  ${dayName}`;
+
+      //
+
+      let inputDate = document.getElementById("date");
+      let btn = document.getElementById("btn");
+
+      //
+
+      btn.addEventListener("click", () => {
+        let curDate = new Date();
+        // 날짜 데이터 가져오기
+        let selectedDate = inputDate.value;
+        // 문자열 날짜를 Date타입으로 변환(2024-07-20)
+        let afterDate = new Date(selectedDate);
+
+        let diff = afterDate - curDate;
+
+        let remainDay = Math.ceil(diff / (1000 * 60 * 60 * 24));
+        let p = document.getElementById("p");
+
+        p.innerHTML = `D-day까지 ${remainDay}일 남았습니다`;
+      });
+    </script>
+  </body>
+</html>

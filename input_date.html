@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="dage">날짜</label>
+    <input type="date" name="" id="date" />
+    <button id="btn">날짜 가져오기</button>
+    <script>
+      // input 태그 가져오기
+      let inputDate = document.getElementById("date");
+      // button 태그 가져오기
+      let btn = document.getElementById("btn");
+      // 클릭 이벤트 발생
+      btn.addEventListener("click", () => {
+        let selectedDate = inputDate.value;
+        console.log(selectedDate, typeof selectedDate);
+      });
+    </script>
+  </body>
+</html>

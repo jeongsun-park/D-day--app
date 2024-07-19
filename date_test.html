@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Gasoek+One&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        text-align: center;
+        background-color: rgb(197, 197, 197);
+      }
+      h1 {
+        font-family: "Gasoek One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+        color: rgb(52, 0, 136);
+      }
+      li {
+        list-style: none;
+      }
+      button {
+        padding: 15px;
+        background-color: rgb(197, 197, 197);
+        color: rgb(0, 0, 0);
+      }
+      button:hover {
+        background-color: rgb(54, 54, 54);
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="date">현재 날짜 확인</h1>
+    <ul>
+      <li id="curdate"></li>
+    </ul>
+    <h1 id="hour">현재 시간 확인</h1>
+    <ul>
+      <li id="curhour"></li>
+    </ul>
+    <button id="btn">시간 업데이트</button>
+    <script>
+      btn.addEventListener("click", () => {
+        let li = document.querySelector("#curdate");
+        let li1 = document.querySelector("#curhour");
+        let date1 = new Date();
+        li.innerHTML = `${date1.getFullYear()}년 ${
+          date1.getMonth() + 1
+        }월 ${date1.getDate()}일`;
+        li1.innerHTML = `${date1.getHours()}시 ${date1.getMinutes()}분 ${date1.getSeconds()}초`;
+      });
+
+      //   // 현재 날짜를 보여줄 p태그
+      //   let curDateElement = document.getElementById("curdate");
+      //   // 현재 시간를 보여줄 p태그
+      //   let curTimeElement = document.getElementById("curhour");
+      //   // 이벤트를 발생시킬 버튼태그
+      //   let updateBtn = document.getElementById("btn");
+      //   // 현재 날짜
+
+      //   // 버튼 이벤트
+      //   btn.addEventListener("click", () => {
+      //     let date = new Date();
+      //     let year = date.getFullYear();
+      //     let month = date.getMonth();
+      //     let curDate = date.getDate();
+      //     let hours = date.getHours();
+      //     let minutes = date.getMinutes();
+      //     let seconds = date.getSeconds();
+      //     // 날짜 문자열생성
+      //     let curDateString = `${year}년 ${month}월 ${curDate}일`;
+      //     //시간 문자열 생성
+      //     let curTimeString = `${hours}시 ${minutes}분 ${seconds}초`;
+      //     // 생성한 p태그안에 넣기
+      //     curDateElement.innerHTML = curDateString;
+      //     curTimeElement.innerHTML = curTimeString;
+      //   });
+    </script>
+  </body>
+</html>
